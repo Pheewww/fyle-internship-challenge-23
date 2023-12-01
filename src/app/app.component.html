@@ -1,5 +1,33 @@
-<div class="grid h-screen place-items-center">
-  <div class="font-bold text-3xl">
-    Fyle Internship Challenge
+
+<div class="flex flex-col items-center justify-center p-6">
+  <div class="flex mb-4">
+    <input [(ngModel)]="username" type="text" placeholder="Enter GitHub username"
+      class="shadow appearance-none border rounded py-2 px-3 text-grey-darker mr-4">
+    <button (click)="onSearch()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      Search
+    </button>
+  </div>
+
+  <div *ngIf="loading" class="text-lg text-blue-600">Loading...</div>
+
+  <div *ngIf="error" class="text-red-500 text-sm mt-2">{{ error }}</div>
+
+  <div *ngIf="userProfile" class="mt-4 text-center">
+    <h2 class="text-xl font-bold">{{ userProfile.name }}</h2>
+    <p class="text-md text-gray-800">{{ userProfile.bio }}</p>
+    <p class="text-md text-blue-700">{{ userProfile.html_url }}</p>
+  </div>
+
+  <div *ngIf="userRepos.length > 0" class="mt-6">
+    <ul class="list-disc">
+      <li *ngFor="let repo of userRepos" class="mb-2">
+        <a [href]="repo.html_url" target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold">
+          {{ repo.name }}
+        </a>
+        <p class="text-gray-700 text-sm">{{ repo.description }}</p>
+      </li>
+    </ul>
+
+    <app-repository-list></app-repository-list>
   </div>
 </div>
