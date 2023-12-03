@@ -13,6 +13,7 @@ export class RepositoryListComponent implements OnInit {
   totalRepos: number = 0;
   pageSize: number = 10;
   pageIndex: number = 0; 
+  
 
   constructor(private apiService: ApiService) {}
 
