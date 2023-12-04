@@ -25,7 +25,7 @@ export interface GithubUser {
   providedIn: 'root'
 })
 export class ApiService {
-  private headers = new HttpHeaders({ 'Accept': 'application/vnd.github.v3+json', 'Authorization': 'token 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' });
+  private headers = new HttpHeaders({ 'Accept': 'application/vnd.github.v3+json' });
 
   constructor(private httpClient: HttpClient) { }
 
