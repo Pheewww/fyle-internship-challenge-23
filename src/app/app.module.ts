@@ -5,14 +5,16 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from  '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RepositoryListComponent } from './repository-list/repository-list.component';
+// import { RepositoryListComponent } from './repository-list/repository-list.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faFontAwesome } from '@fortawesome/free-solid-svg-icons';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RepositoryListComponent
+    //RepositoryListComponent
   ],
   imports: [
     BrowserModule,
@@ -20,6 +22,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
      FormsModule,
      BrowserAnimationsModule,
       MatPaginatorModule,
+      FontAwesomeModule,
+     
   ],
   providers: [],
   bootstrap: [AppComponent]

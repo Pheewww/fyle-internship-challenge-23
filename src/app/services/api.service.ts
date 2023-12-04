@@ -25,7 +25,7 @@ export interface GithubUser {
   providedIn: 'root'
 })
 export class ApiService {
-  private headers = new HttpHeaders({ 'Accept': 'application/vnd.github.v3+json' });
+  private headers = new HttpHeaders({ 'Accept': 'application/vnd.github.v3+json', 'Authorization': 'token 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' });
 
   constructor(private httpClient: HttpClient) { }
 
@@ -36,7 +36,7 @@ export class ApiService {
       );
   }
 
-  getRepos(githubUsername: string, page: number = 1, perPage: number = 10): Observable<GithubRepo[]> {
+  getRepos(githubUsername: string, page: number, perPage: number): Observable<GithubRepo[]> {
     const params = new HttpParams()
       .set('page', page.toString())
       .set('per_page', perPage.toString());

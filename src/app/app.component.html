@@ -1,4 +1,7 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+<div class="main-content">
+  
 
 <div class="flex flex-col items-center justify-center p-6">
   <div class="flex mb-4">
@@ -8,6 +11,7 @@
       Search
     </button>
   </div>
+ 
 
   <ng-container *ngIf="loading; else content">
     <!-- user profile -->
@@ -31,7 +35,25 @@
         </div>
       </div>
     </div>
+  
+
+
+
   </ng-container>
+  
+  </div>
+ 
+
+  <ng-container *ngIf="userRepos && userRepos.length > 0">
+    <mat-paginator [length]="totalRepos" [pageIndex]="currentPage - 1" [pageSize]="pageSize"
+      [pageSizeOptions]="[10, 20, 30, 50]" (page)="onPageChange($event)" class="sticky-paginator">
+    </mat-paginator>
+  </ng-container>
+
+
+
+
+  
 
 
   <ng-template #content>
@@ -43,14 +65,15 @@
         <div class="flex flex-col">
           <h2 class="text-2xl font-bold">{{ userProfile.name || userProfile.login }}</h2>
           <p class="text-md text-gray-800">{{ userProfile.bio }}</p>
-          <div class="flex items-center mt-1">
-            <i class="fas fa-map-marker-alt mr-2 text-gray-600"></i><span>{{ userProfile.location }}</span>
-          </div>
-          <div class="flex items-center mt-1">
-            <i class="fas fa-link mr-2 text-gray-600"></i><a [href]="userProfile.html_url" target="_blank">
-              {{ userProfile.html_url }}
-            </a>
-          </div>
+        <div class="flex items-center mt-1">
+          <fa-icon [icon]="['fas', 'map-marker-alt']" class="mr-2 text-gray-600"></fa-icon>
+          <span>{{ userProfile.location }}</span>
+        </div>
+        <div class="flex items-center mt-1">
+          <fa-icon [icon]="['fas', 'link']" class="mr-2 text-gray-600"></fa-icon>
+          <a [href]="userProfile.html_url" target="_blank">{{ userProfile.html_url }}</a>
+        </div>
+
         </div>
       </div>
     </div>
